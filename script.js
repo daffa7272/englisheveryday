@@ -750,6 +750,21 @@ function showNextActivityModal(nextActivityId, currentStep, totalSteps) {
     }, { once: true });
 }
 
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  // Blokir shortcut inspect umum
+  if (
+    e.key === 'F12' ||
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') ||
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') ||
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') ||
+    (e.ctrlKey && e.key.toLowerCase() === 'u')
+  ) {
+    e.preventDefault();
+  }
+});
+
+
 // --- DAILY PLAN BUILDER FEATURE ---
 function startPlanBuilder() {
     const planSection = document.getElementById('planBuilderSection');
